@@ -29,7 +29,13 @@ alias cmd='cm diff'
 alias cme='cm edit --apply'
 alias cmf='cm forget'
 alias cmr='cm re-add'
-
+b() { 
+   if [ $# -eq 0 ]; then
+      bc -l
+   else
+      echo "$*" | bc -l
+   fi
+}
 alias g='git'
 alias ff='fastfetch'
 alias rl='source ~/.zshrc'
