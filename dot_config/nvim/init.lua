@@ -15,7 +15,7 @@ vim.o.virtualedit = "all"
 vim.o.swapfile = false
 
 vim.cmd('syntax on')
-vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+vim.cmd('colo habamax')
 
 vim.o.cursorline = true
 
