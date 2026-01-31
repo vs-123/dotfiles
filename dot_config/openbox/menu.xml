@@ -2,6 +2,18 @@
 
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
+<menu id="apps-editors-menu" label="Text Editors">
+  <item label="Neovim">
+    <action name="Execute">
+      <command>nvim</command>
+      <startupnotify>
+        <enabled>yes</enabled>
+        <wmclass>Neovim</wmclass>
+      </startupnotify>
+    </action>
+  </item>
+</menu>
+
 <menu id="apps-term-menu" label="Terminal Emulators">
   <item label="Kitty">
     <action name="Execute">
