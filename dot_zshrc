@@ -1,0 +1,42 @@
+alias ls='ls -Fa --color=auto'
+alias l='ls'
+alias ll='ls -l'
+alias c='cd'
+alias ..='cd ..'
+
+alias cl='clear'
+alias mkd='mkdir -p'
+
+export EDITOR='nvim'
+alias e="$EDITOR"
+alias em="$EDITOR"
+alias nvi="$EDITOR"
+alias vim="$EDITOR"
+
+alias ee='em ~/.config/nvim/init.lua'
+alias eg='em ~/.config/git/config'
+alias ek='em ~/.config/kitty/kitty.conf'
+alias eo='em ~/.config/openbox/'
+alias ep='em ~/.config/picom/picom.conf'
+alias ex='em ~/.xinitrc'
+alias ez='em ~/.zshrc'
+
+alias cm='chezmoi'
+alias cma='cm add'
+alias cmc='cm cd'
+alias cmd='cm diff'
+alias cme='cm edit --apply'
+alias cmr='cm re-add'
+
+alias g='git'
+alias ff='fastfetch'
+alias rl='source ~/.zshrc'
+alias sx='startx'
+
+alias xi='sudo xbps-install -S'
+alias xu='sudo xbps-install -Su'
+alias xiy='sudo xbps-install -Sy'
+alias xq='sudo xbps-query -Rs'
+
+bindkey -e
+PROMPT=$'%n %m %~\n%% '

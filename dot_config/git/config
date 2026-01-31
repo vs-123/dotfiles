@@ -1,0 +1,28 @@
+[user]
+	email = 
+	name = vs-123
+
+[core]
+   pager = 
+   excludesfile = *~
+
+[alias]
+   a = add
+   b = branch
+   c = commit
+   cfg = config
+   ch = checkout
+   d = diff
+   gcfg = config --global
+   l = log
+   lr = log --reverse
+   pl = pull
+   ps = push
+   psf = push -f
+   rb = rebase --committer-date-is-author-date
+   rbi = rebase -i --committer-date-is-author-date
+   rbir = rebase -i --root --committer-date-is-author-date
+   rs = reset
+   rsh = reset --hard
+   st = status
+   sw = switch
