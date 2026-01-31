@@ -77,7 +77,7 @@ end)
 
 vim.keymap.set('n', '<leader>r', function()
    vim.lsp.buf.rename()
-   print("[SUCCESS] Formatted!")
+   print("[SUCCESS] Renamed!")
 end)
 
 local cmp = require('cmp')
