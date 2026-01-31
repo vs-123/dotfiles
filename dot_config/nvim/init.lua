@@ -14,11 +14,10 @@ vim.o.scrolloff = 3
 vim.o.virtualedit = "all"
 vim.o.swapfile = false
 
-vim.cmd('syntax on')
-vim.cmd('colo habamax')
+vim.o.syntax = 'off' -- doesn't work for some reason
+vim.cmd('colo quiet')
 
 vim.o.cursorline = true
-
 vim.g.mapleader = " "
 
 vim.keymap.set('n', '<leader>l', ':tabn<CR>')
