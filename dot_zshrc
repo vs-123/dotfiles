@@ -45,6 +45,7 @@ alias xi='sudo xbps-install -S'
 alias xu='sudo xbps-install -Su'
 alias xiy='sudo xbps-install -Sy'
 alias xq='sudo xbps-query -Rs'
+alias xr='sudo xbps-remove -y'
 
 bindkey -e
 PROMPT=$'%n %m %~\n%% '

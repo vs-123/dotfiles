@@ -17,6 +17,8 @@ vim.o.swapfile = false
 vim.cmd('syntax on')
 vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
 
+vim.o.cursorline = true
+
 vim.g.mapleader = " "
 
 vim.keymap.set('n', '<leader>l', ':tabn<CR>')
