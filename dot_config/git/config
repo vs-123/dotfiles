@@ -11,6 +11,7 @@
    b = branch
    c = commit
    cfg = config
+   cl = clone
    ch = checkout
    d = diff
    gcfg = config --global

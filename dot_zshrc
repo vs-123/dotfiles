@@ -24,10 +24,12 @@ alias ez='em ~/.zshrc'
 
 alias cm='chezmoi'
 alias cma='cm add'
+alias cmae='cm add --encrypt'
 alias cmap='cm apply'
 alias cmc='cm cd'
 alias cmd='cm diff'
 alias cme='cm edit --apply'
+alias cmec='cm edit-config'
 alias cmf='cm forget'
 alias cmr='cm re-add'
 b() { 
