@@ -14,7 +14,7 @@ vim.o.scrolloff = 3
 vim.o.virtualedit = "all"
 vim.o.swapfile = false
 
-vim.cmd('colo default')
+vim.cmd('colo retrobox')
 
 vim.o.cursorline = true
 vim.g.mapleader = " "
