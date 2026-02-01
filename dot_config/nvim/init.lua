@@ -14,8 +14,7 @@ vim.o.scrolloff = 3
 vim.o.virtualedit = "all"
 vim.o.swapfile = false
 
-vim.o.syntax = 'off' -- doesn't work for some reason
-vim.cmd('colo quiet')
+vim.cmd('colo default')
 
 vim.o.cursorline = true
 vim.g.mapleader = " "

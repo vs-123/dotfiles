@@ -5,6 +5,7 @@ alias c='cd'
 alias ..='cd ..'
 
 alias cl='clear'
+alias lc='clear'
 alias mkd='mkdir -p'
 
 export EDITOR='nvim'
