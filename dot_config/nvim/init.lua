@@ -19,29 +19,26 @@ vim.cmd('colo retrobox')
 vim.o.cursorline = true
 vim.g.mapleader = " "
 
-vim.keymap.set('n', '<leader>l', ':tabn<CR>')
-vim.keymap.set('n', '<leader>h', ':tabp<CR>')
-vim.keymap.set('n', '<leader>.', ':tabn<CR>')
-vim.keymap.set('n', '<leader>,', ':tabp<CR>')
-vim.keymap.set('n', '<leader>n', ':tabnew<CR>')
-vim.keymap.set('n', '<leader>q', ':tabclose<CR>')
-vim.keymap.set('n', '<leader>Q', ':bd!<CR>')
+vim.keymap.set('n', '<leader>l', ':tabn<CR>', {silent = true})
+vim.keymap.set('n', '<leader>h', ':tabp<CR>', {silent = true})
+vim.keymap.set('n', '<leader>L', ':tabm+1<CR>', {silent = true})
+vim.keymap.set('n', '<leader>H', ':tabm-1<CR>', {silent = true})
+vim.keymap.set('n', '<leader>n', ':tabnew<CR>', {silent = true})
+vim.keymap.set('n', '<leader>q', ':tabclose<CR>', {silent = true})
+vim.keymap.set('n', '<leader>Q', ':bd!<CR>', {silent = true})
 
-vim.keymap.set('n', '<leader>e', ':Ex<CR>')
+vim.keymap.set('n', '<leader>e', ':Ex<CR>', {silent = true})
+vim.keymap.set('n', '<leader>t', ':term<CR>', {silent = true})
 
-vim.keymap.set('n', '<C-w>1', ':on<CR>')
+vim.keymap.set('t', '<esc>', '<C-\\><C-n>', {silent = true})
 
-vim.keymap.set('n', '<leader>t', ':term<CR>')
-
-vim.keymap.set('i', '<C-f>', '<Right>')
-vim.keymap.set('i', '<C-b>', '<Left>')
-
-vim.keymap.set('t', '<esc>', '<C-\\><C-n>')
-
-vim.keymap.set('c', '<C-a>', '<HOME>')
-vim.keymap.set('c', '<C-e>', '<END>')
-vim.keymap.set('c', '<C-f>', '<Right>')
-vim.keymap.set('c', '<C-b>', '<Left>')
+vim.keymap.set('n', '<C-w>1', ':on<CR>', {silent = true})
+vim.keymap.set('i', '<C-f>', '<Right>', {silent = true})
+vim.keymap.set('i', '<C-b>', '<Left>', {silent = true})
+vim.keymap.set('c', '<C-a>', '<HOME>', {silent = true})
+vim.keymap.set('c', '<C-e>', '<END>', {silent = true})
+vim.keymap.set('c', '<C-f>', '<Right>', {silent = true})
+vim.keymap.set('c', '<C-b>', '<Left>', {silent = true})
 
 vim.cmd([[
 call plug#begin()
@@ -78,6 +75,16 @@ end)
 vim.keymap.set('n', '<leader>r', function()
    vim.lsp.buf.rename()
    print("[SUCCESS] Renamed!")
+end)
+
+vim.keymap.set('n', '<leader>j', function()
+   vim.lsp.buf.definition()
+   print("[SUCCESS] Jumped!")
+end)
+
+vim.keymap.set('n', '<leader>R', function()
+   vim.lsp.buf.references()
+   print("[SUCCESS] Got references!")
 end)
 
 local cmp = require('cmp')
