@@ -23,6 +23,7 @@
    rb = rebase --committer-date-is-author-date
    rbi = rebase -i --committer-date-is-author-date
    rbir = rebase -i --root --committer-date-is-author-date
+   rem = remote
    rs = reset
    rsh = reset --hard
    st = status
