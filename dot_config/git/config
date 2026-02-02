@@ -1,29 +1,47 @@
 [user]
 	email = 
-	name = vs-123
+	name = VS-123
 
 [core]
    pager = 
-   excludesfile = *~
+
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+
+[diff]
+   tool = nvimdiff
+
+[difftool "nvimdiff"]
+   cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [alias]
    a = add
+   aa = add -A
    b = branch
+   bm = branch -M
+   bd = branch -D
    c = commit
    cfg = config
-   cl = clone
    ch = checkout
+   cl = clone
    d = diff
+   dt = difftool
+   f = fetch
    gcfg = config --global
-   l = log
-   lr = log --reverse
+   l = log --reverse
+   lr = log 
    pl = pull
+   pl = pull --rebase
    ps = push
+   psu = push -u
    psf = push -f
    rb = rebase --committer-date-is-author-date
    rbi = rebase -i --committer-date-is-author-date
    rbir = rebase -i --root --committer-date-is-author-date
    rem = remote
+   rema = remote add
+   remr = remote remove
+   rmc = rm --cache
    rs = reset
    rsh = reset --hard
    st = status
