@@ -28,7 +28,7 @@
    ch = checkout
    cl = clone
    d = diff
-   dt = difftool
+   dt = difftool -y
    f = fetch
    gcfg = config --global
    l = log --reverse
