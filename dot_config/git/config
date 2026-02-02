@@ -36,7 +36,7 @@
    l = log --reverse
    lr = log 
    pl = pull
-   pl = pull --rebase
+   plr = pull --rebase
    ps = push
    psu = push -u
    psf = push -f
