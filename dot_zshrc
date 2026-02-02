@@ -32,6 +32,7 @@ alias cme='cm edit --apply'
 alias cmec='cm edit-config'
 alias cmf='cm forget'
 alias cmr='cm re-add'
+
 b() { 
    if [ $# -eq 0 ]; then
       bc -l
@@ -39,8 +40,17 @@ b() {
       echo "$*" | bc -l
    fi
 }
-alias g='git'
+
+fastfetch() {
+  command fastfetch --pipe false | \
+  sed -E "s/(CPU.*: ).*/\1Toaster 2002/" | \
+  sed -E "s/(GPU.*: ).*/\1Potato (\x1b[33m56% rotten\x1b[0m)/" | \
+  sed -E "s/Display(.*)(:.*)/Display (Potato)\2/" |\
+  sed -E "s/(Local IP).*(: )([^0-9]*).*/\1 (null)\2\30.0.0.0/"
+}
+
 alias ff='fastfetch'
+alias g='git'
 alias rl='source ~/.zshrc'
 alias sx='startx'
 
@@ -49,6 +59,7 @@ alias xu='sudo xbps-install -Su'
 alias xiy='sudo xbps-install -Sy'
 alias xq='sudo xbps-query -Rs'
 alias xr='sudo xbps-remove -y'
+
 
 bindkey -e
 PROMPT=$'%n %m %~\n%% '
