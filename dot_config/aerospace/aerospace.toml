@@ -54,6 +54,10 @@ automatically-unhide-macos-hidden-apps = false
     alt-9 = 'workspace 9'
     alt-0 = 'workspace 10'    
 
+    alt-shift-1 = 'move-node-to-workspace 1'
+    alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
+    alt-shift-4 = 'move-node-to-workspace 4'
     alt-shift-5 = 'move-node-to-workspace 5'
     alt-shift-6 = 'move-node-to-workspace 6'
     alt-shift-7 = 'move-node-to-workspace 7'
