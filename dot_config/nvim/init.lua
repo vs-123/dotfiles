@@ -68,7 +68,6 @@ vim.lsp.enable('cmake')
 
 require("lazydev").setup({
   library = {
-    vim.env.VIMRUNTIME,
     "~/.local/share/nvim/plugged",
   },
 })
@@ -89,7 +88,6 @@ vim.lsp.config.lua_ls = {
          workspace = {
             checkThirdParty = false,
             library = {
-               vim.env.VIMRUNTIME,
             },
             maxPreload = 100000,
             preloadFileSize = 10000,
@@ -137,4 +135,3 @@ cmp.setup({
 })
 
 vim.o.completeopt = 'menuone'
-

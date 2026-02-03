@@ -47,11 +47,11 @@ b() {
 }
 
 fastfetch() {
-  command fastfetch --pipe false $* | \
-  sed -E "s/(CPU.*: ).*/\1Toaster 2002/" | \
-  sed -E "s/(GPU.*: ).*/\1Potato (\x1b[33m56% rotten\x1b[0m)/" | \
-  sed -E "s/Display(.*)(:.*)/Display (Potato)\2/" | \
-  sed -E "s/(Local IP).*(: )([^0-9]*).*/\1 (null)\2\30.0.0.0/"
+   command fastfetch --pipe false $* | \
+   sed -E "s/(CPU.*: ).*/\1Toaster 2002/" | \
+   sed -E "s/(GPU.*: ).*/\1Potato (\x1b[33m56% rotten\x1b[0m)/" | \
+   sed -E "s/Display(.*)(:.*)/Display (Potato)\2/" | \
+   sed -E "s/(Local IP).*(: )([^0-9]*).*/\1 (null)\2\30.0.0.0/"
 }
 
 alias ff='fastfetch'
@@ -66,6 +66,6 @@ alias xq='xbps-query -Rs'
 alias xr='sudo xbps-remove -y'
 alias xu='sudo xbps-install -Su'
 
-bindkey -e
+bindkey -v
 PROMPT=$'┌ %~\n└ %% '
 
