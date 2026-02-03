@@ -66,4 +66,5 @@ alias xq='sudo xbps-query -Rs'
 alias xr='sudo xbps-remove -y'
 
 bindkey -e
-PROMPT=$'%~\n%% '
+PROMPT=$'┌ %~\n└ %% '
+
