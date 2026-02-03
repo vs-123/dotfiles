@@ -47,6 +47,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'jremmen/vim-ripgrep'
+Plug 'folke/lazydev.nvim'
 call plug#end()
 ]])
 
@@ -64,6 +65,40 @@ vim.lsp.config.cmake = {
 }
 
 vim.lsp.enable('cmake')
+
+require("lazydev").setup({
+  library = {
+    vim.env.VIMRUNTIME,
+    "~/.local/share/nvim/plugged",
+  },
+})
+
+vim.lsp.config.lua_ls = {
+   cmd = {'lua-language-server'},
+   root_markers={'.luarc.json', '.git'},
+   filetypes={'lua'},
+   settings = {
+      Lua = {
+         runtime = {
+            version = 'LuaJIT',
+         },
+         diagnostics = {
+            globals = { 'vim' },
+         },
+         telemetry = { enable = false },
+         workspace = {
+            checkThirdParty = false,
+            library = {
+               vim.env.VIMRUNTIME,
+            },
+            maxPreload = 100000,
+            preloadFileSize = 10000,
+         },
+      },
+   },
+}
+
+vim.lsp.enable('lua_ls')
 
 vim.diagnostic.config({virtual_text=false, signs=false, underline=false})
 
@@ -91,16 +126,10 @@ local cmp = require('cmp')
 
 cmp.setup({
 	mapping = {
-		['<C-i>'] = cmp.mapping.complete(),
 		['<C-A-i>'] = cmp.mapping.complete(),
-		['<C-A-j>'] = cmp.mapping.open_docs(),
       ['<enter>'] = cmp.mapping.confirm(),
-      ['<C-enter>'] = cmp.mapping.confirm(),
-      ['<TAB>'] = cmp.mapping.confirm(),
 		['<C-n>'] = cmp.mapping.select_next_item(),
 		['<C-p>'] = cmp.mapping.select_prev_item(),
-		['<Down>'] = cmp.mapping.select_next_item(),
-		['<Up>'] = cmp.mapping.select_prev_item(),
 	},
 	window={completion={max_height = 7}},
 	sources={{name="nvim_lsp"}, {name="buffer"}},
@@ -108,3 +137,4 @@ cmp.setup({
 })
 
 vim.o.completeopt = 'menuone'
+
