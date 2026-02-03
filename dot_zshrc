@@ -60,10 +60,11 @@ alias rl='source ~/.zshrc'
 alias sx='startx'
 
 alias xi='sudo xbps-install -S'
-alias xu='sudo xbps-install -Su'
 alias xiy='sudo xbps-install -Sy'
-alias xq='sudo xbps-query -Rs'
+alias xl='xbps-query -l'
+alias xq='xbps-query -Rs'
 alias xr='sudo xbps-remove -y'
+alias xu='sudo xbps-install -Su'
 
 bindkey -e
 PROMPT=$'┌ %~\n└ %% '
