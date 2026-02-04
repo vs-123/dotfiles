@@ -15,6 +15,13 @@ PKGS="
    zsh 
 "
 
+DEV_PKGS="
+   cmake \
+   clang \
+   lua-language-server \
+   cmake-language-server \
+"
+
 GRPHCL_PKGS="
    dbus \
    feh \
@@ -34,6 +41,18 @@ case "$user_input" in
    [yY])
       echo "INSTALLING..." &&\
       sudo xbps-install -Syu $PKGS
+      ;;
+   *)
+      echo "NOT INSTALLING"
+      ;;
+esac
+echo ""
+
+read -p "INSTALL DEV PACKAGES? (y/N) " user_input
+case "$user_input" in
+   [yY])
+      echo "INSTALLING..." &&\
+      sudo xbps-install -Syu $DEV_PKGS
       ;;
    *)
       echo "NOT INSTALLING"
