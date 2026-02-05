@@ -3,13 +3,14 @@ alias l='ls'
 alias ll='ls -lh'
 
 alias c='cd'
-alias c.='cd ..'
 alias ..='cd ..'
 
 clearf() {
+   # basically removes scrollback buffer
    printf '\033[2J\033[3J\033[1;1H'
 }
 
+# permutations for typos
 alias cl='clear'
 alias lc='clear'
 alias clf='clearf'
@@ -45,14 +46,16 @@ alias cmf='cm forget'
 alias cmr='cm re-add'
 
 b() { 
+   # bc's underrated
    if [ $# -eq 0 ]; then
-      bc -l
+      bc -ql
    else
-      echo "$*" | bc -l
+      echo "$*" | bc -ql
    fi
 }
 
 fastfetch() {
+   # i'm not really into show-off-your-setup stuff
    command fastfetch --pipe false $* | \
    sed -E "s/(CPU.*: ).*/\1Toaster 2002/" | \
    sed -E "s/(GPU.*: ).*/\1Potato (\x1b[33m56% rotten\x1b[0m)/" | \
@@ -61,7 +64,7 @@ fastfetch() {
 }
 
 alias ff='fastfetch'
-alias g='git'
+alias g='git'   
 alias rl='source ~/.zshrc'
 alias sx='startx'
 
@@ -72,8 +75,12 @@ alias xq='xbps-query -Rs'
 alias xr='sudo xbps-remove -y'
 alias xu='sudo xbps-install -Su'
 
+# case-insensitive search, pretty convenient
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 autoload -Uz compinit && compinit
-bindkey -v
-PROMPT=$'┌ %~\n└ %% '
 
+# emacs keybinds make more sense for the shell
+# compared to vi lol
+bindkey -e
+
+PROMPT=$'%~\n%% '

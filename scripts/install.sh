@@ -4,7 +4,27 @@ echo "####################"
 echo "#  INSTALL SCRIPT  #"
 echo "####################"
 
-PKGS="
+ipkgp() {
+   pkgctgry=$1
+   pkgs=$2
+
+   pkgctgry_uppr=$(echo "$pkgctgry" | tr [:lower:] [:upper:])
+   echo "$pkgctgry_uppr PACKAGES : $pkgs"
+
+   echo "INSTALL $pkgctgry_uppr PACKAGES? (y/N) " 
+   read usrinp
+   case "$usrinp" in
+      [yY])
+         echo "INSTALLING..." && sudo xbps-install -Syu $pkgs
+         ;;
+      *)
+         echo "NOT INSTALLING"
+         ;;
+   esac
+   echo ""
+}
+
+GNRL_PKGS="
    bc \
    btop \
    chezmoi \
@@ -19,7 +39,7 @@ DEV_PKGS="
    cmake \
    clang \
    lua-language-server \
-   cmake-language-server \
+   cmake-language-server
 "
 
 GRPHCL_PKGS="
@@ -33,42 +53,10 @@ GRPHCL_PKGS="
    mesa-demos \
    openbox \
    rofi \
-   xorg \
+   xorg 
 "
 
-read -p "INSTALL PACKAGES? (y/N) " user_input
-case "$user_input" in
-   [yY])
-      echo "INSTALLING..." &&\
-      sudo xbps-install -Syu $PKGS
-      ;;
-   *)
-      echo "NOT INSTALLING"
-      ;;
-esac
-echo ""
-
-read -p "INSTALL DEV PACKAGES? (y/N) " user_input
-case "$user_input" in
-   [yY])
-      echo "INSTALLING..." &&\
-      sudo xbps-install -Syu $DEV_PKGS
-      ;;
-   *)
-      echo "NOT INSTALLING"
-      ;;
-esac
-echo ""
-
-read -p "INSTALL GRAPHICAL PACKAGES? (y/N) " user_input
-case "$user_input" in
-   [yY])
-      echo "INSTALLING..." &&\
-      sudo xbps-install -Syu $GRPHCL_PKGS
-      ;;
-   *)
-      echo "NOT INSTALLING"
-      ;;
-esac
-echo ""
+ipkgp "GENERAL" "$GNRL_PKGS"
+ipkgp "DEVELOPMENT" "$DEV_PKGS"
+ipkgp "GRAPHICAL" "$GRPHCL_PKGS"
 
