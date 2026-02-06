@@ -28,7 +28,6 @@ GNRL_PKGS="
    bc \
    btop \
    chezmoi \
-   firefox \
    git \
    neovim \
    xclip \
