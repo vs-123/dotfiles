@@ -16,6 +16,8 @@ vim.o.mouse = ''
 vim.o.scrolloff = 3
 vim.o.virtualedit = "all"
 
+vim.cmd(":set path+=**")
+
 vim.g.mapleader = " "
 
 vim.keymap.set('c', '<C-a>', '<HOME>', { silent = true })
@@ -33,7 +35,6 @@ Plug 'folke/lazydev.nvim'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'jremmen/vim-ripgrep'
 Plug 'neovim/nvim-lspconfig'
 call plug#end()
 ]])
