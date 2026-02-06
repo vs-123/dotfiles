@@ -6,8 +6,10 @@ alias c='cd'
 alias ..='cd ..'
 
 clearf() {
-   # basically removes scrollback buffer
-   printf '\033[2J\033[3J\033[1;1H'
+   clrscr='\033[2J'
+   clrscrlbuf='\033[3J'
+   movcrsrTL='\033[1;1H'
+   printf "$clrscr $clrscrlbuf $movcrsrTL"
 }
 
 # permutations for typos
