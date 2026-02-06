@@ -3,13 +3,15 @@
 echo "####################"
 echo "#  INSTALL SCRIPT  #"
 echo "####################"
+echo ""
+echo "* AUTHOR: vs-123 @ https://github.com/vs-123"
+echo ""
 
 ipkgp() {
    pkgctgry=$1
    pkgs=$2
 
-   pkgctgry_uppr=$(echo "$pkgctgry" | tr [:lower:] [:upper:])
-   echo "$pkgctgry_uppr PACKAGES : $pkgs"
+   echo "$pkgctgry PACKAGES : $pkgs"
 
    echo "INSTALL $pkgctgry_uppr PACKAGES? (y/N) " 
    read usrinp
@@ -30,7 +32,6 @@ GNRL_PKGS="
    chezmoi \
    git \
    neovim \
-   xclip \
    zsh 
 "
 
@@ -52,6 +53,7 @@ GRPHCL_PKGS="
    mesa-demos \
    openbox \
    rofi \
+   xclip \
    xorg 
 "
 
