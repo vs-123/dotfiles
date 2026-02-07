@@ -13,7 +13,7 @@ ipkgp() {
 
    echo "$pkgctgry PACKAGES : $pkgs"
 
-   echo "INSTALL $pkgctgry_uppr PACKAGES? (y/N) " 
+   echo "INSTALL $pkgctgry PACKAGES? (y/N) " 
    read usrinp
    case "$usrinp" in
       [yY])
