@@ -4,6 +4,10 @@ alias ll='ls -lh'
 
 alias c='cd'
 alias ..='cd ..'
+cf() {
+   dname=$1
+   cd $(find . -name "$dname" -type d)
+}
 
 clearf() {
    clrscr='\033[2J'

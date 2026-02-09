@@ -23,9 +23,12 @@ vim.g.mapleader = " "
 vim.keymap.set('c', '<C-a>', '<HOME>', { silent = true })
 vim.keymap.set('c', '<C-e>', '<END>', { silent = true })
 vim.keymap.set('n', '<C-w>1', ':on<CR>', { silent = true })
-vim.keymap.set('n', '<leader>Q', ':bd!<CR>', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true })
+vim.keymap.set('n', '<leader>h', ':bp<CR>', { silent = true })
+vim.keymap.set('n', '<leader>l', ':bn<CR>', { silent = true })
 vim.keymap.set('n', '<leader>q', ':bd<CR>', { silent = true })
+vim.keymap.set('n', '<leader>q', ':bd<CR>', { silent = true })
+vim.keymap.set('n', '<leader>Q', ':bd!<CR>', { silent = true })
 vim.keymap.set('n', '<leader>t', ':term<CR>', { silent = true })
 vim.keymap.set('t', '<esc>', '<C-\\><C-n>', { silent = true })
 
@@ -121,7 +124,7 @@ cmp.setup({
    mapping = {
       ['<C-i>'] = cmp.mapping(function(_)
          cmp.complete()
-         cmp.select_next_item()
+         --cmp.select_next_item()
       end),
       ['<enter>'] = cmp.mapping.confirm(),
       ['<C-n>'] = cmp.mapping.select_next_item(),
