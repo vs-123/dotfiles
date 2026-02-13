@@ -32,6 +32,7 @@ alias rrf='rm -rf'
 export EDITOR='nvim'
 
 alias em="$EDITOR"
+alias ed="ed -p'>'"
 alias ee='em ~/.config/nvim/init.lua'
 alias eg='em ~/.config/git/config'
 alias ek='em ~/.config/kitty/kitty.conf'
@@ -90,3 +91,4 @@ autoload -Uz compinit && compinit
 bindkey -e
 
 PROMPT=$'%~\n%% '
+
