@@ -2,7 +2,31 @@ vim.o.cursorline = true
 vim.o.nu = true
 vim.o.rnu = true
 
+local rnu_toggle = vim.api.nvim_create_augroup("You're watching me... aren't you?", { clear = true })
+
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+   group = rnu_toggle,
+   callback = function()
+      if vim.v.event.cmdtype == ":" then
+         vim.o.rnu = false
+         vim.cmd("redraw")
+      end
+   end,
+})
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+   group = rnu_toggle,
+   callback = function()
+      if vim.v.event.cmdtype == ":" then
+         vim.o.rnu = true
+      end
+   end,
+})
+
 vim.cmd('colo retrobox')
+vim.cmd('filetype plugin off')
+
+vim.cmd('let g:python_recommended_style = 0')
 
 vim.o.expandtab = true
 vim.o.shiftwidth = 3
@@ -39,6 +63,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'neovim/nvim-lspconfig'
+Plug 'godlygeek/tabular'
 call plug#end()
 ]])
 
