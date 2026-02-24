@@ -25,6 +25,7 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 
 vim.cmd('colo retrobox')
 vim.cmd('filetype plugin off')
+vim.cmd("let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'")
 
 vim.cmd('let g:python_recommended_style = 0')
 
