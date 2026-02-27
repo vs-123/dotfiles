@@ -7,7 +7,7 @@ alias c='cd'
 alias ..='cd ..'
 cf() {
    dname=$1
-   cd $(find . -name "$dname" -type d)
+   cd $(find . -name "$dname" -type d -print -quit)
 }
 
 clearf() {
