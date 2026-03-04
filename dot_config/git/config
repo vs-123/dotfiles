@@ -27,6 +27,7 @@
    ch = checkout
    cl = clone
    d = diff
+   dh = diff head   
    do = diff origin
    dt = difftool -y
    dto = difftool -y origin
