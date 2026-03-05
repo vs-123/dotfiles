@@ -30,9 +30,11 @@ alias rr='rm -r'
 alias rf='rm -f'
 alias rrf='rm -rf'
 
-export EDITOR='emacsclient -nw -c'
+export EDITOR='emacsclient -nw -c -a "emacs -nw"'
 
 alias em="$EDITOR"
+alias emk="em -e '(kill-emacs)'"
+alias emd="emacs --daemon &"
 alias ed="ed -p'>'"
 alias ee='em ~/.emacs'
 alias eg='em ~/.config/git/config'

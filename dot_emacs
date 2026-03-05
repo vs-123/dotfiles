@@ -53,11 +53,19 @@
 (setq mouse-wheel-scroll-amount 3)
 (setq backup-inhibited t)
 (setq word-wrap t)
+(setq next-screen-context-lines 10)
 
-(global-set-key (kbd "<C-tab>") 'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "<C-S-tab>") 'tab-bar-switch-to-prev-tab)
+(defun my/logical-line-on-prefix (orig-fun &rest args)
+  "Use logical line movement when C-u is used"
+  (let ((line-move-visual (if current-prefix-arg nil line-move-visual)))
+    (apply orig-fun args)))
+
+(advice-add 'next-line :around #'my/logical-line-on-prefix)
+(advice-add 'previous-line :around #'my/logical-line-on-prefix)
+
 (global-set-key (kbd "M-,") 'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "M-.") 'tab-bar-switch-to-next-tab)
+;; typo keybinds
 (global-set-key (kbd "C-x C-p") 'previous-line)
 (global-set-key (kbd "C-x C-n") 'next-line)
 (global-set-key (kbd "C-x f") 'find-file)
@@ -97,6 +105,7 @@
 ;(add-hook 'c++-mode-hook #'eglot-ensure)
 (add-hook 'cmake-mode-hook #'eglot-ensure)
 (add-hook 'python-mode-hook #'eglot-ensure)
+(add-hook 'python-ts-mode-hook #'eglot-ensure)
 (setq eglot-stay-out-of '(flymake))
 
 ;; COMPANY
