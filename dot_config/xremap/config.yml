@@ -1,0 +1,24 @@
+keymap:
+  - name: Keybinds
+    remap:
+      C-a: Home
+      C-e: End
+      C-f: Right
+      C-b: Left
+      C-n: Down
+      C-p: Up
+      
+      C-k: [Shift-End, Backspace]
+      C-d: Delete
+      C-h: Backspace
+      
+      C-t: [Shift-Right, Ctrl-x, Left, Ctrl-v, Right]
+      M-t: [Ctrl-Shift-Right, Ctrl-x, Ctrl-Left, Ctrl-v, Ctrl-Right]
+
+  - name: Clipboard
+    remap:
+      Super-a: C-a
+      Super-c: C-c
+      Super-v: C-v
+      Super-x: C-x
+      Super-z: C-z
