@@ -35,6 +35,7 @@ export EDITOR='emacsclient -nw -c -a "emacs -nw"'
 alias em="$EDITOR"
 alias emk="em -e '(kill-emacs)'"
 alias emd="emacs --daemon &"
+alias emkd="emk && emd"
 alias ed="ed -p'>'"
 alias ee='em ~/.emacs'
 alias eg='em ~/.config/git/config'
