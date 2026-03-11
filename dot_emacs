@@ -1,6 +1,6 @@
-;;;;;;;;;;;;;;;;;;;
-;; PACKAGE SETUP ;;
-;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  PACKAGES & HELPER FUNCTIONS  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
@@ -13,59 +13,76 @@
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
-;;;;;;;;;;;;;;;;;;;
-;; ACTUAL CONFIG ;;
-;;;;;;;;;;;;;;;;;;;
-
 (defun my/rand-str (len)
-   (let ((chars "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+   (let ((chars "1234567890")
          (result ""))
       (dotimes (_ len result)
          (let ((idx (random (length chars))))
             (setq result (concat result (substring chars idx (1+ idx))))))))
-
-(defun my/spam-greet ()
-   (let* ((len (+ 333 (random 333)))
-          (magic (my/rand-str len)))
-      (setq initial-scratch-message (format ";; %s\n\n" magic))
-      (setq inhibit-startup-echo-area-message (user-login-name))
-      (add-hook 'emacs-startup-hook `(lambda () (message "%s" ,magic)))))
-
-(my/spam-greet)
-
-(menu-bar-mode 0)
-(scroll-bar-mode 0)
-(column-number-mode 1)
-(indent-tabs-mode 0)
-(tab-bar-mode t)
-(setq inhibit-startup-screen 1)
-
-(global-display-line-numbers-mode t)
-(setq display-line-numbers-type 'relative)
-
-(set-frame-font "Menlo 16")
-
-(setq tab-width 3)
-(setq c-basic-offset 3)
-(setq c-ts-mode-indent-offset 3)
-(setq scroll-margin 3)
-(setq scroll-conservatively 101)
-(setq mouse-wheel-scroll-amount 3)
-(setq backup-inhibited t)
-(setq word-wrap t)
-(setq next-screen-context-lines 10)
 
 (defun my/logical-line-on-prefix (orig-fun &rest args)
   "Use logical line movement when C-u is used"
   (let ((line-move-visual (if current-prefix-arg nil line-move-visual)))
     (apply orig-fun args)))
 
+(defun my/spam-greet ()
+   (let* ((len (+ 333 (random 333)))
+          (magic (my/rand-str len)))
+      (setq initial-scratch-message (format ";; %s\n\n" magic))
+      (setq inhibit-startup-echo-area-message (user-login-name))
+  ;   (add-hook 'emacs-startup-hook `(lambda () (message "%s" ,magic)))
+      ))
+
+;;;;;;;;;;;;;;;;;;;;;;
+;;  UI & COSMETICS  ;;
+;;;;;;;;;;;;;;;;;;;;;;
+
+(set-frame-font "Menlo 16")
+(my/pkg-i 'royal-hemlock-theme)
+(load-theme 'royal-hemlock t)
+
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+(column-number-mode 1)
+(indent-tabs-mode 0)
+(tab-bar-mode t)
+(global-hl-line-mode t)
+(global-display-line-numbers-mode t)
+
+(setq inhibit-startup-screen 1
+      display-line-numbers-type 'relative)
+
+(my/spam-greet)
+
+;;;;;;;;;;;;;;;;;;;;;;;;
+;;  EDITOR BEHAVIOUR  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq backup-inhibited t
+      c-basic-offset 3
+      c-ts-mode-indent-offset 3
+      case-replace nil
+      mouse-wheel-scroll-amount 3
+      next-screen-context-lines 10
+      scroll-conservatively 101
+      scroll-margin 3
+      tab-width 3
+      word-wrap t
+      package-archive-zip-program '("gtar" "-z" "--no-same-owner")
+      org-startup-truncated nil
+      word-wrap t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  KEYBINDS & ADVICE  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (advice-add 'next-line :around #'my/logical-line-on-prefix)
 (advice-add 'previous-line :around #'my/logical-line-on-prefix)
 
 (global-set-key (kbd "M-,") 'tab-bar-switch-to-prev-tab)
 (global-set-key (kbd "M-.") 'tab-bar-switch-to-next-tab)
-;; typo keybinds
 (global-set-key (kbd "C-x C-p") 'previous-line)
 (global-set-key (kbd "C-x C-n") 'next-line)
 (global-set-key (kbd "C-x f") 'find-file)
@@ -74,62 +91,48 @@
 (global-set-key (kbd "C-x s") 'save-buffer)
 (global-set-key (kbd "C-z") nil)
 
-(my/pkg-i 'cmake-mode)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;  PROGRAMMING MODES & PKGS  ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; GENERAL UTILITIES
 (my/pkg-i 'magit)
+(my/pkg-i 'xclip)
+(xclip-mode 1)
+
+;; COMPLETION -- COMPANY
+(my/pkg-i 'company)
+(setq company-idle-delay nil
+      company-minimum-prefix-length 2)
+(add-hook 'after-init-hook 'global-company-mode)
+(global-set-key (kbd "C-M-i") 'company-complete)
+
+;; LSP -- EGLOT
+(my/pkg-i 'eglot)
+(require 'eglot)
+(setq eglot-stay-out-of '(flymake))
+
+;; LANGUAGES
+(my/pkg-i 'cmake-mode)
+(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
+(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
+(my/pkg-i 'adoc-mode)
+
+(setq major-mode-remap-alist '((c-mode . c-ts-mode)))
+
+;; HOOKS
+(add-hook 'c-ts-mode-hook #'eglot-ensure)
+(add-hook 'cmake-mode-hook #'eglot-ensure)
+(add-hook 'python-mode-hook #'eglot-ensure)
 
 ;(my/pkg-i 'htmlize)
 ;(my/pkg-i 'package-lint)
 ;(my/pkg-i 'package-lint-flymake)
 ;(my/pkg-i 'package-build)
 
-(my/pkg-i 'xclip)
-(xclip-mode 1)
-
-(my/pkg-i 'royal-hemlock-theme)
-(load-theme 'royal-hemlock t)
-
-(setq package-archive-zip-program '("gtar" "-z" "--no-same-owner"))
-
-(add-to-list 'auto-mode-alist '("CMakeLists\\.txt\\'" . cmake-mode))
-(add-to-list 'auto-mode-alist '("\\.cmake\\'" . cmake-mode))
-
-(setq org-startup-truncated nil)
-(setq word-wrap t)
-
-(setq major-mode-remap-alist '((c-mode . c-ts-mode)))
-
-;; EGLOT
-(my/pkg-i 'eglot)
-(require 'eglot)
-(add-hook 'c-ts-mode-hook #'eglot-ensure)
-;(add-hook 'c++-mode-hook #'eglot-ensure)
-(add-hook 'cmake-mode-hook #'eglot-ensure)
-(add-hook 'python-mode-hook #'eglot-ensure)
-(add-hook 'python-ts-mode-hook #'eglot-ensure)
-(setq eglot-stay-out-of '(flymake))
-
-;; COMPANY
-(my/pkg-i 'company)
-(add-hook 'after-init-hook 'global-company-mode)
-(setq company-idle-delay nil)
-(setq company-minimum-prefix-length 2)
-(global-set-key (kbd "C-M-i") 'company-complete)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;
-;; EMACS-ADDED CONFIG ;;
+;;  SYSTEM GENERATED  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("0e95e16380f7b40b5dada1b68e53ef2078ed574de7e27c2629c86e854dc0fb82"
-     default))
- '(package-selected-packages nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
