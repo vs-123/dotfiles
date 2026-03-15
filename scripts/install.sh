@@ -51,6 +51,7 @@ GRPHCL_PKGS="
    kitty \
    mesa \
    mesa-demos \
+   mpv \
    openbox \
    rofi \
    xclip \
