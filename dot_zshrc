@@ -30,14 +30,15 @@ alias rr='rm -r'
 alias rf='rm -f'
 alias rrf='rm -rf'
 
-export EDITOR='emacsclient -nw -c -a "emacs -nw"'
+export EDITOR='nvim'
+#export EDITOR='emacsclient -nw -c -a "emacs -nw"'
 
 alias em="$EDITOR"
-alias emk="em -e '(kill-emacs)'"
-alias emd="emacs --daemon &"
-alias emkd="emk && emd"
+#alias emk="em -e '(kill-emacs)'"
+#alias emd="emacs --daemon &"
+#alias emkd="emk && emd"
 alias ed="ed -p'>'"
-alias ee='em ~/.emacs'
+alias ee='em ~/.config/nvim/init.lua'
 alias eg='em ~/.config/git/config'
 alias ek='em ~/.config/kitty/kitty.conf'
 alias eo='em ~/.config/openbox/'
