@@ -58,7 +58,14 @@ GRPHCL_PKGS="
    xorg 
 "
 
+AUDIO_PKGS="
+   pipewire
+   wireplumber
+   alsa-pipewire
+"
+
 ipkgp "GENERAL" "$GNRL_PKGS"
 ipkgp "DEVELOPMENT" "$DEV_PKGS"
 ipkgp "GRAPHICAL" "$GRPHCL_PKGS"
+ipkgp "AUDIO" "$AUDIO_PKGS"
 
