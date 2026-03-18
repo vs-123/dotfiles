@@ -11,7 +11,7 @@ vim.o.mouse = 'a'
 vim.o.scrolloff = 3
 vim.o.virtualedit = "all"
 
-vim.cmd('colo retrobox')
+vim.cmd('colo royal-hemlock')
 vim.cmd('filetype plugin off')
 vim.cmd("let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'")
 vim.cmd(":set path+=**")
@@ -36,3 +36,5 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
       end
    end,
 })
+
+vim.cmd("command! -nargs=+ -complete=file Vg vimgrep <args>")

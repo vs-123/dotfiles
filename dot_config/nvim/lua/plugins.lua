@@ -11,6 +11,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'godlygeek/tabular'
 Plug 'Sang-it/fluoride'
+Plug 'vs-123/royal-hemlock-nvim'
 call plug#end()
 ]])
 
