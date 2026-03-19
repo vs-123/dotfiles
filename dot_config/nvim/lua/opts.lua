@@ -37,4 +37,4 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
    end,
 })
 
-vim.cmd("command! -nargs=+ -complete=file Vg vimgrep <args>")
+vim.cmd("command! -nargs=+ -complete=file Vg vimgrep <args> | copen")

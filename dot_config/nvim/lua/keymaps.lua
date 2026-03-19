@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.keymap.set('c', '<C-a>', '<HOME>', { silent = true })
 vim.keymap.set('c', '<C-e>', '<END>', { silent = true })
 vim.keymap.set('n', '<C-w>1', ':on<CR>', { silent = true })
+vim.keymap.set('n', 'gf', ':Fluoride<CR>', { silent = true })
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', { silent = true })
 vim.keymap.set('n', '<leader>h', ':bp<CR>', { silent = true })
 vim.keymap.set('n', '<leader>l', ':bn<CR>', { silent = true })
