@@ -32,7 +32,7 @@ gfxsetup() {
    case "$usrinp" in
       [yY])
          echo "SETTING UP..."   
-         ln -s /etc/sv/dbus /var/service/
+         sudo ln -s /etc/sv/dbus /var/service/
          sudo echo "en_US.UTF-8 UTF-8" >> /etc/default/libc-locales
          sudo xbps-reconfigure -f glibc-locales
          ;;
@@ -67,6 +67,7 @@ GRPHCL_PKGS="
    glxinfo \
    kitty \
    mesa \
+   mesa-dri \
    mesa-demos \
    mpv \
    openbox \
