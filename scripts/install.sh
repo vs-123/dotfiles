@@ -26,6 +26,23 @@ ipkgp() {
    echo ""
 }
 
+gfxsetup() {
+   echo "SETUP GRAPHICS SERVICES? (y/N) " 
+   read usrinp
+   case "$usrinp" in
+      [yY])
+         echo "SETTING UP..."   
+         ln -s /etc/sv/dbus /var/service/
+         sudo echo "en_US.UTF-8 UTF-8" >> /etc/default/libc-locales
+         sudo xbps-reconfigure -f glibc-locales
+         ;;
+      *)
+         echo "NOT SETUP"
+         ;;
+   esac
+   echo ""
+}
+
 GNRL_PKGS="
    bc \
    btop \
@@ -68,4 +85,6 @@ ipkgp "GENERAL" "$GNRL_PKGS"
 ipkgp "DEVELOPMENT" "$DEV_PKGS"
 ipkgp "GRAPHICAL" "$GRPHCL_PKGS"
 ipkgp "AUDIO" "$AUDIO_PKGS"
+gfxsetup
+
 
