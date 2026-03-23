@@ -26,6 +26,10 @@
    cfg = config
    ch = checkout
    cl = clone
+   cld = clone --depth 1
+   clr = clone --recurse
+   cldr = clone --depth 1 --recurse
+   clrd = clone --depth 1 --recurse
    d = diff
    dh = diff head   
    do = diff origin
