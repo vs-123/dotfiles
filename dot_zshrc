@@ -91,7 +91,7 @@ alias sx='startx'
 
 alias xi='sudo xbps-install -S'
 alias xiy='sudo xbps-install -Sy'
-alias xl='xbps-query -l'
+alias xl='xbps-query -m'
 alias xq='xbps-query -Rs'
 alias xr='sudo xbps-remove -y'
 alias xu='sudo xbps-install -Su'
