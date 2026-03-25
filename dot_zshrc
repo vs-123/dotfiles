@@ -66,6 +66,24 @@ b() {
    fi
 }
 
+clock() {
+   if [ $# -eq 0 ]
+   then
+      echo "[USAGE] clock N\n[DESC] prints date for N seconds"
+      return
+   fi
+
+   date
+   for _ in $(seq 1 $1 | tail -n +2)
+   do
+      sleep 1
+      date
+   done
+}
+
+alias c100='clock 100'
+alias c10='c100'
+
 alias ff='fastfetch'
 alias g='git'   
 alias rl='source ~/.zshrc'
