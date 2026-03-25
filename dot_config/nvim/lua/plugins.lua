@@ -102,8 +102,7 @@ fluoride.setup({
       center_breakpoint = 80, -- switch to centered layout below this width
    },
    keymaps = {
-      close = "q",            -- close the window
-      close_alt = "<C-c>",    -- alternative close (set false to disable)
+      close = "<C-c>",            -- close the window
       jump = "<CR>",          -- jump to code point
       peek = "gd",            -- peek at code point (center + flash)
       hover = "K",            -- LSP hover on code point
