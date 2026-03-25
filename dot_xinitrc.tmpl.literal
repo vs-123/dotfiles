@@ -1,0 +1,14 @@
+DISPLAY=
+
+if [[ -z "$DBUS_SESSION_BUS_ADDRESS" ]]; then
+   eval $(dbus-launch --exit-with-session --sh-syntax)
+fi
+
+export MESA_GL_VERSION_OVERRIDE=3.1
+export MESA_GLSL_VERSION_OVERRIDE=140
+
+picom --config ~/.config/picom/picom.conf &
+xset r rate 200 50
+xrandr --output $DISPLAY --scale 1.75x1.75
+sh ~/.fehbg
+exec dbus-run-session openbox
