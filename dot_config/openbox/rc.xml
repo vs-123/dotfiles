@@ -194,6 +194,9 @@
          <action name="Unshade"/>
          <action name="Move"/>
       </mousebind>
+      <mousebind button="W-S-Left" action="Drag">
+         <action name="Resize"/>
+      </mousebind>
    </context>
 
    <context name="Titlebar">
