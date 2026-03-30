@@ -86,6 +86,9 @@ alias c10='c100'
 
 alias ff='fastfetch'
 alias g='git'   
+alias gps='git push'   
+alias gpl='git pull'   
+
 alias rl='source ~/.zshrc'
 alias sx='startx'
 
