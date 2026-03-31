@@ -31,8 +31,8 @@
    cldr = clone --depth 1 --recurse
    clrd = clone --depth 1 --recurse
    d = diff
-   dh = diff head   
-   do = diff origin
+   dh = diff HEAD   
+   do = diff origin/main
    dt = difftool -y
    dto = difftool -y origin
    f = fetch
