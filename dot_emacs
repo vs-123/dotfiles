@@ -4,12 +4,12 @@
 
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
-	     ("melpa" . "https://melpa.org/packages/")))
+	("melpa" . "https://melpa.org/packages/")))
 
 (package-initialize)
 
 (defun my/pkg-i (pkg)
-  "Adds package `pkg`"
+  "ADDS PACKAGE `PKG`"
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
@@ -21,7 +21,7 @@
             (setq result (concat result (substring chars idx (1+ idx))))))))
 
 (defun my/logical-line-on-prefix (orig-fun &rest args)
-  "Use logical line movement when C-u is used"
+  "USE LOGICAL LINE MOVEMENT WHEN C-U IS USED"
   (let ((line-move-visual (if current-prefix-arg nil line-move-visual)))
     (apply orig-fun args)))
 
@@ -29,18 +29,16 @@
    (let* ((len (+ 333 (random 333)))
           (magic (my/rand-str len)))
       (setq initial-scratch-message (format ";; %s\n\n" magic))
-      (setq inhibit-startup-echo-area-message (user-login-name))
-  ;   (add-hook 'emacs-startup-hook `(lambda () (message "%s" ,magic)))
-      ))
+      (setq inhibit-startup-echo-area-message (user-login-name))))
 
 ;;;;;;;;;;;;;;;;;;;;;;
 ;;  UI & COSMETICS  ;;
 ;;;;;;;;;;;;;;;;;;;;;;
 
-(set-frame-font "Menlo 16")
 (my/pkg-i 'royal-hemlock-theme)
 (load-theme 'royal-hemlock t)
 
+(tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
 (column-number-mode 1)
@@ -136,3 +134,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  SYSTEM GENERATED  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
