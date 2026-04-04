@@ -34,8 +34,8 @@ emacs () {
   emacsclient -nw -c -a "emacs -nw" "$@" || command emacs "$@" || command emacs -nw "$@" || TERM=xterm command emacs -nw "$@"
 }
 
-#export EDITOR='nvim'
-export EDITOR='emacs'
+export EDITOR='nvim'
+#export EDITOR='emacs'
 
 alias em="$EDITOR"
 #alias emk="em -e '(kill-emacs)'"
